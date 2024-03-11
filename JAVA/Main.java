@@ -2,13 +2,22 @@ package JAVA;
 
 public class Main {
     
-    public String name;
+    public String nama;
+    public String nim;
     public int age;
 
-    public void getNama(){
-        System.out.println("Hello world");
+
+    public String getNama(){
+        return nama;
+    }
+    public String getNim(){
+    return nim;
     }
     public int getAge(){
         return age;
+    }
+    public void display(){
+        System.out.println("Berikut hasil nya :    ");
+        System.out.println("NAMA: "+ nama +",NIM: "+nim + ", Umur: "+age);
     }
 }
