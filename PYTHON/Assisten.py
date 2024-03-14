@@ -1,61 +1,69 @@
 import speech_recognition as sr
+import datetime
 import pyttsx3
+from google.cloud import speech_v1p1beta1 as speech
+import os
 
-def recognize_speech():
-    r = sr.Recognizer()
-
-    with sr.Microphone() as source:
-        print("Please say something...")
-        audio = r.listen(source)
-
-    try:
-        text = r.recognize_google(audio, language='en-US')  # Menggunakan bahasa Inggris
-        print("You said:", text)
-        return text
-    except sr.UnknownValueError:
-        print("Sorry, I couldn't understand your voice.")
-    except sr.RequestError as e:
-        print("Error on Google request; {0}".format(e))
-
-def change_voice(engine, voice_id):
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[voice_id].id)
-
-def speak(text, voice_id=0):  
+def speak(text):
     engine = pyttsx3.init()
-    
-    # Checking if voice_id is valid
-    voices = engine.getProperty('voices')
-    if voice_id < 0 or voice_id >= len(voices):
-        print("Error: Invalid voice ID.")
-        return
-    
-    # Selecting the voice based on voice_id
-    change_voice(engine, voice_id)
-
-    # Speaking the text
     engine.say(text)
     engine.runAndWait()
 
+def recognize_speech():
+    client = speech.SpeechClient()
+
+    config = {
+        "encoding": speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        "sample_rate_hertz": 16000,
+        "language_code": "id-ID",
+    }
+
+    with sr.Microphone() as source:
+        print("Silakan katakan sesuatu...")
+        audio = client.recognize(config=config, audio=speech.RecognitionAudio(content=source))
+
+    try:
+        return audio.results[0].alternatives[0].transcript
+    except IndexError:
+        print("Maaf, tidak bisa mengenali suara Anda.")
+
 def welcome_message():
-    speak("Welcome! I'm ready to assist you. Please speak.")
+    print("Selamat datang! Saya siap membantu Anda. Silakan berbicara.")
 
 def main():
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "path/to/your/credential.json"
+
     welcome_message()
     
     while True:
         command = recognize_speech()
         
         if command:
-            if "goodbye" in command:
-                speak("Goodbye! Have a great day.")
+            if "selamat tinggal" in command:
+                print("Sampai jumpa! Semoga harimu menyenangkan.")
                 break
-            elif "today" in command:
-                speak("Today is a beautiful day!")
-            elif "thank you" in command:
-                speak("You're welcome, always happy to help.")
+            elif "hari ini" in command:
+                print("Hari ini adalah hari yang cerah!")
+            elif "terima kasih" in command:
+                print("Tidak masalah, selalu senang bisa membantu.")
+            elif "menu utama" in command:
+                speak("Menu utama. Pilih salah satu dari pilihan berikut: waktu sekarang, nama pemilik, tanggal dan hari sekarang, dan waktu sekarang. Silakan bicara.")
+            elif "waktu sekarang" in command:
+                now = datetime.datetime.now()
+                current_time = now.strftime("%H:%M")
+                speak("Waktu sekarang adalah " + current_time)
+            elif "nama pemilik" in command:
+                speak("Nama pemilik belum diatur.")
+            elif "tanggal dan hari" in command:
+                now = datetime.datetime.now()
+                today = now.strftime("%A, %d %B %Y")
+                speak("Hari ini adalah " + today)
+            elif "waktu real-time" in command:
+                now = datetime.datetime.now()
+                current_time = now.strftime("%H:%M:%S")
+                speak("Waktu real-time sekarang adalah " + current_time)
             else:
-                speak("Sorry, I didn't understand your command.")
+                print("Maaf, saya tidak memahami perintah Anda.")
                 
 if __name__ == "__main__":
     main()
