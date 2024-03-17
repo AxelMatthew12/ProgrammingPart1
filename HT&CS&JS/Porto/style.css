@@ -20,6 +20,28 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .centered {
+    position: absolute;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: aliceblue;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .isian {
+    position: absolute;
+    font-size: 40px;
+    font-family: sans-serif;
+    font-style: italic;
+    color: aliceblue;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+  }
+  
 
   .parallax2 {
     background-image: url("https://w.wallhaven.cc/full/k7/wallhaven-k79xwd.jpg");
@@ -32,7 +54,7 @@ html {
     background-size: cover;
   }
   .mid {
-    height: 450px;
+    height: 400px;
     background-color: rgb(0, 0, 0);
     font-size: 26px;
     color: aqua;
