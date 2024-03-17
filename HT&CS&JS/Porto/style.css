@@ -1,15 +1,18 @@
 html {
     scroll-behavior: smooth;
-    background-color: bisque;
-    background-image: url(https://w.wallhaven.cc/full/l8/wallhaven-l8vp7y.jpg);
+    background-color: rgb(0, 0, 0);
+    background-size: auto;
+}
+.body {
+  font-family: "Lato", sans-serif;
 }
 
 .parallax {
     /* The image used */
-    background-image: url("https://w.wallhaven.cc/full/l8/wallhaven-l8vp7y.jpg");
+    background-image: url("https://w.wallhaven.cc/full/83/wallhaven-83ddr1.jpg");
   
     /* Set a specific height */
-    min-height: 600px; 
+    min-height: 700px; 
   
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -19,7 +22,7 @@ html {
   }
 
   .parallax2 {
-    background-image: url("https://w.wallhaven.cc/full/l8/wallhaven-l8vp7y.jpg");
+    background-image: url("https://w.wallhaven.cc/full/k7/wallhaven-k79xwd.jpg");
     min-height: 600px; 
   
     /* Create the parallax scrolling effect */
@@ -28,3 +31,15 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
   }
+  .mid {
+    height: 450px;
+    background-color: rgb(0, 0, 0);
+    font-size: 26px;
+    color: aqua;
+    
+  }
+
+  
+  
+
+ 

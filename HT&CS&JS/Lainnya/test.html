@@ -17,7 +17,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #000000;
+  background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -27,7 +27,7 @@ body {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #3b3939;
+  color: #818181;
   display: block;
   transition: 0.3s;
 }
@@ -64,15 +64,19 @@ body {
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
+<div class="parallax"></div>
+
 <div id="main">
-  <span style="font-size:30px;cursor:pointer; color: aliceblue;" onclick="openNav()">&#9776; Menu</span>
+  <h2>Sidenav Push Example</h2>
+  <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 </div>
 
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
-  document.body.style.backgroundColor = "rgba(0,0,0,1.0)";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
 function closeNav() {
@@ -81,13 +85,12 @@ function closeNav() {
   document.body.style.backgroundColor = "white";
 }
 </script>
-
-    <div class="parallax"></div>
-    <div class="mid">
-      Scroll Up and Down this page to see the parallax scrolling effect.
-      This div is just here to enable scrolling.
-      Tip: Try to remove the background-attachment property to remove the scrolling effect.
-      </div>
+<div class="mid">
+    Scroll Up and Down this page to see the parallax scrolling effect.
+    This div is just here to enable scrolling.
+    Tip: Try to remove the background-attachment property to remove the scrolling effect.
+    </div>
+    
   <div class="parallax2"></div>
   <div>
     <h1>
