@@ -43,6 +43,7 @@ def welcome_message():
 def main():
     welcome_message()
     
+    # Pemilihan Bahasa
     while True:
         print("Pilih bahasa (Indonesia atau Inggris):")
         language_choice = input().lower()
@@ -56,6 +57,7 @@ def main():
         else:
             print("Bahasa tidak didukung.")
 
+    # Loop Perintah Utama
     while True:
         command = recognize_speech(language).lower()
         
