@@ -1,18 +1,11 @@
+var password = prompt("Password:");
 
- var aku = 20;
-        var kamu = 19;
+if(password == "kopi"){
+       document.write("<h2>Selamat datang bos!</h2>");
 
-        var benar = aku > kamu;
-        var salah = aku < kamu;
+}else {
+       document.write("<p>Password salah, coba lagi!</p>");
 
-        // operator && (and)
-        var hasil = benar && salah;
-        document.write(`${benar} && ${salah} = ${hasil}<br/>`);
-        
-        // operator || (or)
-        var hasil = benar || salah;
-        document.write(`${benar} || ${salah} = ${hasil}<br/>`);
-        
-        // operator ! (not)
-        var hasil = !benar
-        document.write(`!${benar} = ${hasil}<br/>`);
+}
+
+document.write("<p>Terimakasih sudah menggunakan website ini!</p>")
