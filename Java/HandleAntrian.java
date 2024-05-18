@@ -1,5 +1,4 @@
 package Java;
-import java.util.Scanner;
 
 public class HandleAntrian {
     class Node {
@@ -44,6 +43,40 @@ public class HandleAntrian {
         }
         System.out.println();
     }
+
+    public void removeNode(String nama) {
+        if (head == null) {
+            System.out.println("Double Linked list is empty");
+            return;
+        }
+        if (head.nama.equals(nama)) {
+            head = head.next;
+            head.previous = null;
+            return;
+        }
+        if (tail.nama.equals(nama)) {
+            tail = tail.previous;
+            tail.next = null;
+            return;
+        }
+        Node current = head;
+        while (current != null) {
+            {
+                current.previous.next = current.next;
+                current.next.previous = current.previous;
+                return;
+            }
+        }
+        System.out.println("Node with name "+ nama + "not found in the line");
+    }
+    public String peek() {
+        if (head == null) {
+            return "Antrian kosong";
+        } else {
+            return "Antrian pertama: " + head.nama + " - " + head.noHp;
+        }
+    }
+    
 }
 
 
