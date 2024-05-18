@@ -10,6 +10,8 @@ public class MainResto {
         System.out.println("3. Lihat Antrian Pertama");
         System.out.println("4. Cetak Rekaman Antrian & Pesanan");
         System.out.println("-----------------------------------");
+        System.out.println("Masukkan Pilihan anda: ");
+        System.out.println("-----------------------------------");
     }
 
     public static void main(String[] args) {
@@ -22,7 +24,7 @@ public class MainResto {
         do {
             Menu();
             pilih = sc.nextInt();
-            sc.nextLine(); // Membersihkan newline dari input sebelumnya
+            sc.nextLine(); 
 
             switch (pilih) {
                 case 1:
@@ -50,7 +52,7 @@ public class MainResto {
                     break;
 
                 case 4:
-                    // Cetak rekaman antrian dan pesanan di sini
+                    dl_list.peekAll();
                     break;
 
                 default:

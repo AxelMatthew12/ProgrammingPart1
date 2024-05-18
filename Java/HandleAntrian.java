@@ -76,7 +76,17 @@ public class HandleAntrian {
             return "Antrian pertama: " + head.nama + " - " + head.noHp;
         }
     }
-    
+    public void peekAll() {
+        Node current = head;
+        System.out.println("Isi Linked List:");
+        while (current != null) {
+            System.out.println(current.nama + " " + current.noHp);
+            current = current.next;
+        }
+        System.out.println();
+    }
 }
+    
+
 
 
